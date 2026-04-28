@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>1812 год: Отечественная война</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0c0c0c;
+            color: #e6e2d8;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --gunmetal: #141a17;
+            --dark-bg: #0f0f0e;
+            --gold-military: #c9a87b;
+            --bronze: #b58b5c;
+            --paper-dark: #1f1e1a;
+            --border-rust: #6a4e2e;
+            --card-bg: #1c1c18;
+            --accent-glow: #e2c09e;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 20%, #161c19, #0a0a08);
+        }
+
+        .site-header {
+            background: #0b0b09;
+            border-bottom: 2px solid var(--gold-military);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .logo-area h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--gold-military);
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+
+        .logo-area p {
+            font-size: 0.8rem;
+            color: #b8aa8c;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #dbcca8;
+            text-decoration: none;
+            transition: all 0.2s;
+            border-radius: 0px;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-link:hover {
+            color: var(--gold-military);
+            border-bottom-color: var(--gold-military);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        .section {
+            scroll-margin-top: 90px;
+            margin-bottom: 4rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(201, 168, 123, 0.25);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
+            color: var(--gold-military);
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 70px;
+            height: 2px;
+            background: var(--gold-military);
+        }
+
+        .grid-2cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 1.6rem;
+            border-radius: 0px;
+            border-left: 3px solid var(--gold-military);
+            box-shadow: 4px 6px 12px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--gold-military);
+        }
+
+        .battle-list, .participants-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+
+        .battle-item, .person-item {
+            background: #25221c;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-rust);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #e0cfb5;
+        }
+
+        .stats-badge {
+            background: var(--gold-military);
+            color: #0c0c0a;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-top: 0.6rem;
+        }
+
+        .quote-block {
+            background: #1e1b16;
+            border-left: 4px solid var(--gold-military);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-style: italic;
+            font-weight: 400;
+            color: #ddd0bb;
+        }
+
+        .match-area {
+            background: #121210;
+            border: 1px solid var(--border-rust);
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+        .match-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--gold-military);
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .match-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .match-column {
+            flex: 1;
+            min-width: 240px;
+        }
+        .match-column h4 {
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--gold-military);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .match-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .match-card {
+            background: #22201b;
+            border: 1px solid #5e4c32;
+            padding: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-weight: 500;
+            border-radius: 8px;
+            color: #f3e9db;
+        }
+        .match-card.selected {
+            background: #3f3324;
+            border: 2px solid var(--gold-military);
+            color: #ffefcf;
+            transform: scale(1.01);
+        }
+        .match-card.matched {
+            background: #2c3b2b;
+            border-color: #b59a6b;
+            text-decoration: line-through;
+            opacity: 0.7;
+            cursor: default;
+            filter: grayscale(0.1);
+        }
+        .match-card.matched::after {
+            content: " ✓";
+            font-weight: bold;
+            color: var(--gold-military);
+        }
+        .match-feedback {
+            margin-top: 1.8rem;
+            background: #1c1914;
+            padding: 1rem;
+            border-left: 4px solid var(--gold-military);
+        }
+        .reset-match {
+            background: var(--gold-military);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            color: #0c0c0a;
+            font-family: inherit;
+        }
+        .complete-badge {
+            background: #a57c44;
+            color: black;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #050504;
+            border-top: 1px solid #3e3524;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #9c8d73;
+        }
+
+        @media (max-width: 780px) {
+            .grid-2cols, .match-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav-container">
+        <div class="logo-area">
+            <h1>⚔️ 1812 | Отечественная война</h1>
+            <p>Митина Александра | ИОФ-2531</p>
+        </div>
+        <div class="nav-tabs">
+            <a href="#prichiny" class="nav-link">Причины</a>
+            <a href="#srazheniya" class="nav-link">Сражения</a>
+            <a href="#uchastniki" class="nav-link">Участники</a>
+            <a href="#borodino" class="nav-link">Бородино</a>
+            <a href="#itogi" class="nav-link">Итоги</a>
+            <a href="#znachenie" class="nav-link">Значение</a>
+            <a href="#interactive" class="nav-link">Задание</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section id="prichiny" class="section">
+        <h2 class="section-title">Причины войны</h2>
+        <div class="grid-2cols">
+            <div class="info-card">
+                <h3>🇷🇺 Россия</h3>
+                <ul style="margin-left: 1rem;">
+                    <li>Отход от континентальной блокады (тайная торговля с Англией).</li>
+                    <li>Опасения дворянства перед французским влиянием.</li>
+                    <li>Личные противоречия Александра I и Наполеона.</li>
+                    <li>Приближение границ Франции к России.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>🇫🇷 Франция</h3>
+                <ul style="margin-left: 1rem;">
+                    <li>Стремление Наполеона к мировому господству.</li>
+                    <li>Желание восстановить Речь Посполитую за счёт России.</li>
+                    <li>Захват Ольденбургского герцогства (родственник Александра I).</li>
+                    <li>Поддержка Османской империи против России.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="srazheniya" class="section">
+        <h2 class="section-title">Ключевые битвы</h2>
+        <div class="info-card">
+            <div class="battle-list">
+                <span class="battle-item">Смоленск (4–5 авг)</span>
+                <span class="battle-item">Бородино (26 авг)</span>
+                <span class="battle-item">Москва (2 сент – 2 окт)</span>
+                <span class="battle-item">Тарутино (6 окт)</span>
+                <span class="battle-item">Малоярославец (12 окт)</span>
+                <span class="battle-item">Березина (14–16 нояб)</span>
+            </div>
+            <div class="quote-block">
+                «Французы показали себя достойными одержать победу, а русские стяжали право быть непобедимыми»
+            </div>
+        </div>
+    </section>
+
+    <section id="uchastniki" class="section">
+        <h2 class="section-title">Главнокомандующие и герои</h2>
+        <div class="grid-2cols">
+            <div class="info-card">
+                <h3>Российская империя</h3>
+                <div class="participants-list">
+                    <span class="person-item">Александр I</span>
+                    <span class="person-item">М.И. Кутузов</span>
+                    <span class="person-item">П.И. Багратион</span>
+                    <span class="person-item">Барклай-де-Толли</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3>Великая армия</h3>
+                <div class="participants-list">
+                    <span class="person-item">Наполеон Бонапарт</span>
+                    <span class="person-item">Луи-Николя Даву</span>
+                    <span class="person-item">Иохим Мюрат</span>
+                    <span class="person-item">Мишель Ней</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="borodino" class="section">
+        <h2 class="section-title">Бородинское сражение</h2>
+        <div class="info-card">
+            <p>26 августа (8 сентября) 1812 года, главнокомандующий М.И. Кутузов. За 15 часов французы потеряли 40–50 тыс., русские — около 40 тыс. Ни одна из сторон не добилась решающей победы, но армия Наполеона была обескровлена, а русские сохранили боевой дух.</p>
+            <div class="stats-badge">«Сей день пребудет вечным памятником мужества»</div>
+        </div>
+    </section>
+
+    <section id="itogi" class="section">
+        <h2 class="section-title">Итоги войны</h2>
+        <div class="grid-2cols">
+            <div class="info-card">
+                <h3>Россия</h3>
+                <ul><li>Победа и освобождение территории (декабрь 1812).</li><li>Национальный подъём, рост международного престижа.</li><li>Начало Заграничных походов 1813–1814.</li><li>Потери: около 180 тыс. регулярной армии.</li></ul>
+            </div>
+            <div class="info-card">
+                <h3>Франция</h3>
+                <ul><li>Разгром «Великой армии»: из 608 тыс. вернулось ~30 тыс.</li><li>Крах мифа о непобедимости Наполеона.</li><li>Парижский мир 1814: границы 1793 года, ссылка Наполеона на Эльбу.</li></ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="znachenie" class="section">
+        <h2 class="section-title">Наследие войны</h2>
+        <div class="info-card">
+            <p>Россия стала ведущей силой на Венском конгрессе, возникла Священный союз. Война пробудила национальное самосознание, дала толчок развитию общественной мысли и будущему декабристскому движению. Европа на десятилетия изменила баланс сил.</p>
+            <div class="stats-badge">Потери: Россия 150–200 тыс. убитыми, Франция 334 тыс. убитыми</div>
+        </div>
+    </section>
+
+    <section id="interactive" class="section">
+        <h2 class="section-title">🎖️ Интерактивное задание: соотнесите событие и верный факт</h2>
+        <div class="match-area" id="matchGame">
+            <div class="match-title">Сражение → правильная дата / полководец</div>
+            <div class="match-grid">
+                <div class="match-column">
+                    <h4>События / битвы</h4>
+                    <div class="match-items" id="leftItems"></div>
+                </div>
+                <div class="match-column">
+                    <h4>Факты (даты / полководцы)</h4>
+                    <div class="match-items" id="rightItems"></div>
+                </div>
+            </div>
+            <button id="resetMatchBtn" class="reset-match">⟳ Сбросить задание</button>
+            <div id="completionMsg" style="margin-top: 1rem;"></div>
+        </div>
+        <div class="footnote" style="margin-top: 1rem; color:#b39d78;">* Задание на соотнесение: каждая битва или событие имеет правильный парный факт.</div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Источники</h2>
+        <div class="info-card">
+            <p>Безотосный В. М. Наполеоновские войны. — М.: Вече, 2010.<br>
+            Богданович М. И. История Отечественной войны 1812 года: в 3 томах.<br>
+            Борщов А. Д. Отечественная война 1812 // Большая Российская энциклопедия.<br></p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Митина Александра, ИОФ-2531</p>
+</footer>
+
+<script>
+    // Данные для соотнесения: левая часть (событие), правая (верный факт)
+    const pairsData = [
+        { left: "Бородинское сражение", right: "26 августа 1812 года" },
+        { left: "Смоленское сражение", right: "4–5 августа 1812 г." },
+        { left: "Сражение под Малоярославцем", right: "12 октября 1812 г." },
+        { left: "Главнокомандующий русской армией после назначения", right: "М.И. Кутузов" }
+    ];
+
+    let leftItems = [];
+    let rightItems = [];
+
+    let matchedLeft = new Array(pairsData.length).fill(false);
+    let matchedRight = new Array(pairsData.length).fill(false);
+    let selectedSide = null; // 'left' or 'right' + index
+    let selectedLeftIdx = -1;
+    let selectedRightIdx = -1;
+
+    function renderMatchGame() {
+        const leftContainer = document.getElementById('leftItems');
+        const rightContainer = document.getElementById('rightItems');
+        if (!leftContainer || !rightContainer) return;
+
+        leftContainer.innerHTML = '';
+        pairsData.forEach((pair, idx) => {
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            if (matchedLeft[idx]) card.classList.add('matched');
+            card.textContent = pair.left;
+            card.dataset.leftIdx = idx;
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (matchedLeft[idx]) return;
+                document.querySelectorAll('#leftItems .match-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedSide = 'left';
+                selectedLeftIdx = idx;
+                selectedRightIdx = -1;
+                document.querySelectorAll('#rightItems .match-card').forEach(c => c.classList.remove('selected'));
+            });
+            leftContainer.appendChild(card);
+        });
+
+        rightContainer.innerHTML = '';
+        const rightShuffled = pairsData.map((pair, idx) => ({ text: pair.right, originalIdx: idx }));
+        for (let i = rightShuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [rightShuffled[i], rightShuffled[j]] = [rightShuffled[j], rightShuffled[i]];
+        }
+        rightShuffled.forEach((item, displayIdx) => {
+            const origIdx = item.originalIdx;
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            if (matchedRight[origIdx]) card.classList.add('matched');
+            card.textContent = item.text;
+            card.dataset.rightOrigIdx = origIdx;
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (matchedRight[origIdx]) return;
+                document.querySelectorAll('#rightItems .match-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedSide = 'right';
+                selectedRightIdx = origIdx;
+                selectedLeftIdx = -1;
+                document.querySelectorAll('#leftItems .match-card').forEach(c => c.classList.remove('selected'));
+            });
+            rightContainer.appendChild(card);
+        });
+    }
+
+    function tryMatch() {
+        if (selectedLeftIdx !== -1 && selectedRightIdx !== -1) {
+            if (selectedLeftIdx === selectedRightIdx && !matchedLeft[selectedLeftIdx] && !matchedRight[selectedRightIdx]) {
+                matchedLeft[selectedLeftIdx] = true;
+                matchedRight[selectedRightIdx] = true;
+                showMatchFeedback(true, `✓ Верно! "${pairsData[selectedLeftIdx].left}" ↔ "${pairsData[selectedRightIdx].right}"`);
+                selectedLeftIdx = -1;
+                selectedRightIdx = -1;
+                selectedSide = null;
+                renderMatchGame();
+                checkAllMatched();
+            } else {
+                showMatchFeedback(false, `✗ Неверное сопоставление. "${pairsData[selectedLeftIdx]?.left}" не соответствует "${pairsData[selectedRightIdx]?.right}". Попробуйте снова.`);
+                clearSelection();
+                renderMatchGame();
+            }
+        } else {
+            if (selectedLeftIdx !== -1 && selectedRightIdx === -1) {
+                showMatchFeedback(false, "Теперь выберите элемент из правой колонки (факт), чтобы соединить.");
+            } else if (selectedRightIdx !== -1 && selectedLeftIdx === -1) {
+                showMatchFeedback(false, "Выберите событие из левой колонки, чтобы установить пару.");
+            }
+        }
+    }
+
+    function clearSelection() {
+        selectedLeftIdx = -1;
+        selectedRightIdx = -1;
+        selectedSide = null;
+    }
+
+    function showMatchFeedback(isOk, message) {
+        const fbDiv = document.getElementById('matchFeedback');
+        fbDiv.innerHTML = message;
+        fbDiv.style.borderLeftColor = isOk ? '#c9a87b' : '#a5522b';
+        setTimeout(() => {
+            if (document.getElementById('matchFeedback') && !isOk) {
+            }
+        }, 1200);
+    }
+
+    function checkAllMatched() {
+        const allMatched = matchedLeft.every(v => v === true) && matchedRight.every(v => v === true);
+        const completionDiv = document.getElementById('completionMsg');
+        if (allMatched) {
+            completionDiv.innerHTML = '<span class="complete-badge">🏆 Поздравляем! Все пары сопоставлены верно. Вы отлично знаете хронологию и командование.</span>';
+        } else {
+            completionDiv.innerHTML = '';
+        }
+    }
+
+    function resetMatchGame() {
+        matchedLeft.fill(false);
+        matchedRight.fill(false);
+        clearSelection();
+        renderMatchGame();
+        document.getElementById('matchFeedback').innerHTML = '💡 Кликните на элемент слева, затем на элемент справа, чтобы соединить пару. Цель — сопоставить все 4 пары.';
+        document.getElementById('completionMsg').innerHTML = '';
+        const fbDiv = document.getElementById('matchFeedback');
+        fbDiv.style.borderLeftColor = '#c9a87b';
+    }
+
+    function enhancedRender() {
+        const leftContainer = document.getElementById('leftItems');
+        const rightContainer = document.getElementById('rightItems');
+        if (!leftContainer) return;
+        leftContainer.innerHTML = '';
+        pairsData.forEach((pair, idx) => {
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            if (matchedLeft[idx]) card.classList.add('matched');
+            card.textContent = pair.left;
+            card.addEventListener('click', () => {
+                if (matchedLeft[idx]) return;
+                document.querySelectorAll('#leftItems .match-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedLeftIdx = idx;
+                selectedRightIdx = (selectedSide === 'right' && selectedRightIdx !== -1) ? selectedRightIdx : -1;
+                selectedSide = 'left';
+                document.querySelectorAll('#rightItems .match-card').forEach(c => c.classList.remove('selected'));
+                if (selectedRightIdx !== -1) {
+                    tryMatch();
+                } else {
+                    showMatchFeedback(false, "Теперь выберите факт из правой колонки.");
+                }
+            });
+            leftContainer.appendChild(card);
+        });
+
+        const rightShuffled = pairsData.map((pair, idx) => ({ text: pair.right, originalIdx: idx }));
+        for (let i = rightShuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [rightShuffled[i], rightShuffled[j]] = [rightShuffled[j], rightShuffled[i]];
+        }
+        rightContainer.innerHTML = '';
+        rightShuffled.forEach((item) => {
+            const origIdx = item.originalIdx;
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            if (matchedRight[origIdx]) card.classList.add('matched');
+            card.textContent = item.text;
+            card.addEventListener('click', () => {
+                if (matchedRight[origIdx]) return;
+                document.querySelectorAll('#rightItems .match-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedRightIdx = origIdx;
+                selectedLeftIdx = (selectedSide === 'left' && selectedLeftIdx !== -1) ? selectedLeftIdx : -1;
+                selectedSide = 'right';
+                document.querySelectorAll('#leftItems .match-card').forEach(c => c.classList.remove('selected'));
+                if (selectedLeftIdx !== -1) {
+                    tryMatch();
+                } else {
+                    showMatchFeedback(false, "Теперь выберите сражение из левой колонки.");
+                }
+            });
+            rightContainer.appendChild(card);
+        });
+    }
+
+    window.tryMatch = tryMatch;
+    window.showMatchFeedback = showMatchFeedback;
+    window.clearSelection = clearSelection;
+
+    function initGame() {
+        matchedLeft.fill(false);
+        matchedRight.fill(false);
+        selectedLeftIdx = -1;
+        selectedRightIdx = -1;
+        selectedSide = null;
+        enhancedRender();
+        document.getElementById('resetMatchBtn').onclick = () => {
+            matchedLeft.fill(false);
+            matchedRight.fill(false);
+            clearSelection();
+            enhancedRender();
+            document.getElementById('matchFeedback').innerHTML = '💡 Сопоставьте события и факты. Кликните слева, затем справа.';
+            document.getElementById('completionMsg').innerHTML = '';
+        };
+    }
+
+    initGame();
+    window.tryMatch = function() {
+        if (selectedLeftIdx !== -1 && selectedRightIdx !== -1) {
+            if (selectedLeftIdx === selectedRightIdx && !matchedLeft[selectedLeftIdx] && !matchedRight[selectedRightIdx]) {
+                matchedLeft[selectedLeftIdx] = true;
+                matchedRight[selectedRightIdx] = true;
+                showMatchFeedback(true, `✓ Верно! "${pairsData[selectedLeftIdx].left}" ↔ "${pairsData[selectedRightIdx].right}"`);
+                selectedLeftIdx = -1;
+                selectedRightIdx = -1;
+                selectedSide = null;
+                enhancedRender();
+                const allMatched = matchedLeft.every(v => v === true);
+                if (allMatched) document.getElementById('completionMsg').innerHTML = '<span class="complete-badge">🏆 Полное соответствие! Вы мастер истории 1812 года.</span>';
+                else document.getElementById('completionMsg').innerHTML = '';
+            } else {
+                showMatchFeedback(false, `✗ Неправильно: "${pairsData[selectedLeftIdx]?.left}" не подходит к "${pairsData[selectedRightIdx]?.right}".`);
+                selectedLeftIdx = -1;
+                selectedRightIdx = -1;
+                selectedSide = null;
+                enhancedRender();
+            }
+        }
+    };
+</script>
+</body>
+</html>
